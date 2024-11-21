@@ -1,11 +1,25 @@
-
+import { ToastContainer } from "react-toastify";
+import { AppRoutes } from "./routes/AppRoutes";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="bg-blue-500 p-4 text-white">
-      <h1 className="text-2xl font-bold">Hello Tailwind</h1>
-    </div>
-  )
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <AppRoutes />
+    </>
+  );
 }
 
-export default App
+export default App;

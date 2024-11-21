@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
-from rest_framework.exceptions import ValidationError, NotFound
-from datetime import datetime
+from rest_framework.exceptions import ValidationError
+from django.utils.timezone import now
 
 from .models import Todo
 
@@ -20,6 +20,7 @@ class TodoSerializer(ModelSerializer):
             "deadline",
             "is_completed",
             "is_deleted",
+            "created_at",
         ]
 
     def validate(self, attrs):
@@ -33,7 +34,7 @@ class TodoSerializer(ModelSerializer):
 
         # Validate deadline
         if deadline:
-            current_time = datetime.now()
+            current_time = now()
             if deadline < current_time:
                 raise ValidationError("The deadline cannot be in the past.")
 
